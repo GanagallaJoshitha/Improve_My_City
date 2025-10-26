@@ -5,13 +5,16 @@ import { VideoIcon } from './icons/VideoIcon';
 
 // As per guidelines, check for API key selection for Veo models.
 // These window.aistudio functions are assumed to exist in the environment.
-// FIX: Defined the AIStudio type to resolve a global type conflict for window.aistudio.
-interface AIStudio {
-  hasSelectedApiKey: () => Promise<boolean>;
-  openSelectKey: () => Promise<void>;
-}
 
+// FIX: To resolve a "Subsequent property declarations" error, the AIStudio interface
+// is moved inside the `declare global` block. This ensures `AIStudio` is a true global
+// type, preventing conflicts when augmenting the global `Window` interface.
 declare global {
+  interface AIStudio {
+    hasSelectedApiKey: () => Promise<boolean>;
+    openSelectKey: () => Promise<void>;
+  }
+
   interface Window {
     aistudio?: AIStudio;
   }

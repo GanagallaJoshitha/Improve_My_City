@@ -127,15 +127,6 @@ const App: React.FC = () => {
   return (
     <div className="h-screen w-screen bg-slate-100 font-sans">
       <header className="absolute top-0 right-0 z-40 p-4 flex items-center space-x-4">
-        {currentUser?.id.startsWith('citizen') && (
-            <button
-                onClick={() => setView(view === 'map' ? 'create_video' : 'map')}
-                className="bg-white/80 backdrop-blur-sm text-slate-700 font-medium py-2 px-4 rounded-full shadow-md hover:bg-white flex items-center"
-            >
-              {view === 'map' ? <VideoIcon className="w-5 h-5 mr-2" /> : <MapPinIcon className="w-5 h-5 mr-2" />}
-              {view === 'map' ? 'Create Video' : 'View Map'}
-            </button>
-        )}
         {currentUser && (
             <button 
                 onClick={handleLogout}

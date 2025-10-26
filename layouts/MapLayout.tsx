@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ComplaintMap } from '../components/ComplaintMap';
 import type { Complaint, Reporter, UserLocation } from '../types';
 import { SidePanel } from '../components/SidePanel';
-import { ComplaintsCarousel } from '../components/ComplaintsCarousel';
 import { FloatingActionButton } from '../components/FloatingActionButton';
 import { PlusIcon } from '../components/icons/PlusIcon';
 import { ReportIssueModal } from '../components/ReportIssueModal';
@@ -114,14 +113,6 @@ const MapLayout: React.FC<MapLayoutProps> = ({
         />
       </main>
 
-      {!isDesktop && (
-        <ComplaintsCarousel 
-            complaints={complaints}
-            selectedComplaintId={selectedComplaint?.id || null}
-            onComplaintSelect={handleSelectComplaint}
-        />
-      )}
-      
       <FloatingActionButton onClick={() => setModalOpen(true)} label="Report a new issue">
         <PlusIcon className="w-6 h-6" />
       </FloatingActionButton>
